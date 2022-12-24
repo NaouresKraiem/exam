@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+   
+  <h2>Liste des Candidats | <small>
+   <a href="{{ path('ajout_montage') }}">Ajouter</a> </small></h2>
+    {% for msg in app.flashes('notice') %}
+        {{ msg }}
+    {% endfor %}
+   <table class="table table-hover table-striped" border="1">
+    <thead>
+    <tr>
+      <th>id montage</th>
+      <th>Nom Montage</th>
+      <th>client</th>
+      <th>cout</th>
+      <th>CRUD</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for mon in lesMontages %}
+      <tr>
+        <td>{{ mon.id }}</td>
+          <td>{{ mon.nomlmontage }}</td>
+        <td>{{ mon.client | upper}} </td>
+        <td>{{ mon.cout }}</td>
+        <td>
+            <a class="btn btn-primary" href="{{ path('montage_show', {'id':mon.id }) }}">voir</a>
+            <a class="btn btn-info" href="{{ path('edit_montage', {'id':mon.id }) }}">Modifier</a>
+            <a class="btn btn-danger" href="{{ path('delete_montage', {'id':mon.id }) }}" onclick="return confirm('Are you sure to delete!{{ mon.id }}')">Supprimer</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

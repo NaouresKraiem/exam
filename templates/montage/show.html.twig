@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}{{parent()}} - Edit{% endblock %}
+{% block body %}
+<h1>montage numéro : {{montage.id}}</h1>
+    <h3>nom du montage : {{montage.nomlmontage}} </h3><br>
+    <h3>nom du client :{{ montage.client }}</h3>
+     <h3>cout du montage {{ montage.cout }}</h3>
+    <h3>*****Pices*****</h3>
+    <ul class="nav nav-pills nav-stacked">
+        {% for piece in listPieces %}
+            <h4> piece </h4><br>
+            <li>{{ piece.nomPiece}}</li>
+            <li>{{ piece.quantite}}</li>
+            <li>{{ piece.unite}}</li>
+            <li>=====================================</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
